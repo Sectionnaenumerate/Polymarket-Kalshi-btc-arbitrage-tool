@@ -10,6 +10,7 @@
 - **Buy rules**:
   1. **Spread rule**: When Kalshi's YES price is in the **93–96¢** range and Polymarket's YES token is **at least 10¢ cheaper** (or equal), the bot signals **buy on Polymarket**.
   2. **Late resolution**: If Kalshi has **finished** (closed/settled) but Polymarket is **still open** and has liquidity, the bot signals **buy on Polymarket** (arbitrage on timing difference).
+<img width="1452" height="887" alt="552196650-f4d9a000074-2b2a-4c0c-a78c-562fb14d6b77" src="https://github.com/user-attachments/assets/54b6ce80-a4ec-4140-b9dd-324542f29d26" />
 
 ## Stack
 
