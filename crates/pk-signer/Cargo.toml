@@ -1,0 +1,18 @@
+[package]
+name        = "pk-signer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "EIP-712 / CLOB order signing for Polymarket"
+
+[dependencies]
+tokio.workspace     = true
+serde.workspace     = true
+serde_json.workspace= true
+anyhow.workspace    = true
+thiserror.workspace = true
+ethers.workspace    = true
+hex.workspace       = true
+tracing.workspace   = true
+rust_decimal.workspace = true
+chrono.workspace    = true

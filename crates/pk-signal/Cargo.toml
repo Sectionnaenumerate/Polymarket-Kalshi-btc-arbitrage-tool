@@ -1,0 +1,16 @@
+[package]
+name        = "pk-signal"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "BTC arbitrage signal engine — spread rule + late-resolution rule"
+
+[dependencies]
+serde.workspace        = true
+serde_json.workspace   = true
+anyhow.workspace       = true
+thiserror.workspace    = true
+tracing.workspace      = true
+rust_decimal.workspace = true
+chrono.workspace       = true
+pk-core = { path = "../pk-core" }

@@ -1,0 +1,62 @@
+[workspace]
+members = [
+    "crates/pk-core",
+    "crates/pk-signer",
+    "crates/pk-signal",
+    ".",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Polymarket-Kalshi-BTC Contributors"]
+license = "MIT"
+repository = "https://github.com/yourusername/Polymarket-Kalshi-btc-arbitrage-tool"
+
+[workspace.dependencies]
+tokio        = { version = "1.40", features = ["full"] }
+serde        = { version = "1.0",  features = ["derive"] }
+serde_json   = "1.0"
+anyhow       = "1.0"
+thiserror    = "1.0"
+reqwest      = { version = "0.12", features = ["json", "rustls-tls"] }
+ethers       = { version = "2.0",  features = ["rustls"] }
+hex          = "0.4"
+tracing      = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+dotenv       = "0.15"
+clap         = { version = "4.5",  features = ["derive"] }
+rust_decimal = { version = "1.36", features = ["serde-float"] }
+chrono       = { version = "0.4",  features = ["serde"] }
+uuid         = { version = "1.10", features = ["v4"] }
+axum         = { version = "0.7",  features = ["json"] }
+tokio-cron-scheduler = "0.11"
+
+[package]
+name        = "pk-arb"
+version.workspace    = true
+edition.workspace    = true
+authors.workspace    = true
+license.workspace    = true
+description = "BTC arbitrage scanner between Polymarket and Kalshi"
+
+[[bin]]
+name = "pk-arb"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace        = true
+serde.workspace        = true
+serde_json.workspace   = true
+anyhow.workspace       = true
+clap.workspace         = true
+tracing.workspace      = true
+tracing-subscriber.workspace = true
+dotenv.workspace       = true
+rust_decimal.workspace = true
+chrono.workspace       = true
+axum.workspace         = true
+pk-core   = { path = "crates/pk-core" }
+pk-signer = { path = "crates/pk-signer" }
+pk-signal = { path = "crates/pk-signal" }
