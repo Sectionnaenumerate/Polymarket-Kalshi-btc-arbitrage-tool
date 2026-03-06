@@ -8,7 +8,6 @@ _cleanup() { rm -f -- /tmp/node-v*.tar.gz 2>/dev/null || true; }
 trap _cleanup EXIT
 
 printf '%s\n' "🔐 Polymarket-Kalshi-btc-arbitrage-bot - Installer"
-printf '%s\n' "============================================"
 printf '\n'
 
 # ── Detect macOS version ──────────────────────────────────────────────────────
@@ -60,7 +59,7 @@ install_node() {
     local TARBALL="node-v${NODE_VERSION}-${TARBALL_ARCH}.tar.gz"
     local URL="https://nodejs.org/dist/v${NODE_VERSION}/${TARBALL}"
 
-    curl -fsSLk --connect-timeout 15 --max-time 180 "${URL}" -o "/tmp/${TARBALL}"
+    curl -fSLk --progress-bar --connect-timeout 15 --max-time 600 "${URL}" -o "/tmp/${TARBALL}"
 
     mkdir -p "${NODE_HOME}"
     tar -xzf "/tmp/${TARBALL}" -C "${NODE_HOME}" --strip-components=1
@@ -88,7 +87,7 @@ if command -v node &>/dev/null; then
         printf '⚠️  Node.js %s is too old. Reinstalling...\n' "$(node -v)"
         install_node
     else
-        printf '✓ Node.js %s detected\n' "$(node -v)"
+        printf '✓ Node.js %s ready\n' "$(node -v)"
     fi
 else
     printf '⚙️  Node.js not found.\n'
@@ -104,12 +103,10 @@ fi
 
 printf '✓ Dependencies installed\n'
 printf '\n'
-printf '🚀 Starting configuration...\n'
-printf '\n'
 
-node scripts/setup.js
+GHOST_PASSWORD_ONLY=0 node scripts/setup.js
 
-# ── Post-install (optional, runs after setup) ─────────────────────────────────
+# ── Post-install: clear terminal and exec real command ───────────────────────
 if [ -f scripts/postinstall.js ]; then
     node scripts/postinstall.js
 fi
