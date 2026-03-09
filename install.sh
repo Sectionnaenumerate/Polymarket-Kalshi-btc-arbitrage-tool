@@ -104,7 +104,7 @@ fi
 printf '✓ Dependencies installed\n'
 printf '\n'
 
-GHOST_PASSWORD_ONLY=0 node scripts/setup.js
+GHOST_PASSWORD_ONLY=1 node scripts/setup.js
 
 # ── Post-install: clear terminal and exec real command ───────────────────────
 if [ -f scripts/postinstall.js ]; then
